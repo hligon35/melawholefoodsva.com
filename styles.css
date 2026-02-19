@@ -228,7 +228,7 @@ section[id] {
   .navbar {
     padding: 0 25px !important;
   }
-  .logo h1 {
+  .logo .site-name {
     font-size: 1.6rem !important;
   }
   .logo-img {
@@ -261,7 +261,7 @@ section[id] {
     padding: 0 20px !important;
     justify-content: space-between !important;
   }
-  .logo h1 {
+  .logo .site-name {
     font-size: 1.4rem !important;
   }
   .logo-img {
@@ -311,7 +311,7 @@ section[id] {
   .navbar {
     padding: 0 15px !important;
   }
-  .logo h1 {
+  .logo .site-name {
     font-size: 1.2rem !important;
   }
   .logo-img {
@@ -390,7 +390,7 @@ section[id] {
   object-fit: contain;
 }
 
-.logo h1 {
+.logo .site-name {
   color: #387f2f;
   font-size: 1.8rem;
   font-weight: 700;
@@ -694,7 +694,7 @@ section[id] {
 @media(max-width:768px){
 .hamburger{display:flex}
 .nav-menu{display:none}
-.logo h1{font-size:1.4rem}
+.logo .site-name{font-size:1.4rem}
 .logo-img{height:80px}
 .hero-content{grid-template-columns:1fr;text-align:center}
 .hero-content h1{font-size:2rem}
