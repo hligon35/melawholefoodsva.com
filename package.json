@@ -5,15 +5,21 @@
   "main": "contact-server.js",
   "scripts": {
     "start": "node contact-server.js",
-    "dev": "nodemon contact-server.js"
+    "dev": "nodemon contact-server.js",
+    "build:css": "cleancss -o styles.min.css styles.css && node scripts/build-home-css.js && cleancss -o styles.home.min.css styles.home.purged.css",
+    "build:js": "terser script.js -c -m -o script.min.js",
+    "build:assets": "npm run build:css && npm run build:js"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "nodemailer": "^6.9.1",
     "cors": "^2.8.5",
-    "express-rate-limit": "^6.7.0"
+    "express": "^4.18.2",
+    "express-rate-limit": "^6.7.0",
+    "nodemailer": "^6.9.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "clean-css-cli": "^5.6.3",
+    "nodemon": "^2.0.22",
+    "purgecss": "^8.0.0",
+    "terser": "^5.47.1"
   }
 }

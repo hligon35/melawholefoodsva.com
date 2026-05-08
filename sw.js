@@ -4,28 +4,25 @@
   - Network-first for HTML; fall back to /404.html when offline.
 */
 
-const CACHE_NAME = 'mwf-cache-v1';
+const CACHE_NAME = 'mwf-cache-v3';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
-  '/styles.css',
-  '/script.js',
-  '/images/Melalogo.png',
-  '/images/Melapro.png',
-  '/images/empower.avif',
-  '/images/empower.jpg',
-  '/images/produce.jpg',
-  '/images/grains.jpg',
-  '/images/delivery.avif',
-  '/images/fooddelivery.jpg',
-  '/images/nutrition.jpg',
   '/404.html',
-  '/site.webmanifest'
+  '/annual-reports.html',
+  '/food-safety.html',
+  '/partners.html',
+  '/privacy-policy.html',
+  '/styles.min.css?v=20260508',
+  '/styles.home.min.css?v=20260508',
+  '/script.min.js?v=20260508',
+  '/site.webmanifest',
+  '/images/favicon.png'
 ];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(STATIC_ASSETS))
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(STATIC_ASSETS)).then(() => self.skipWaiting())
   );
 });
 
@@ -33,12 +30,15 @@ self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) => Promise.all(
       keys.map((k) => (k !== CACHE_NAME ? caches.delete(k) : Promise.resolve()))
-    ))
+    )).then(() => self.clients.claim())
   );
 });
 
 self.addEventListener('fetch', (event) => {
   const req = event.request;
+  if (req.method !== 'GET') {
+    return;
+  }
 
   // For navigation requests (HTML), try network first, then cache, then 404 fallback
   if (req.mode === 'navigate') {

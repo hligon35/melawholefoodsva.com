@@ -24,7 +24,7 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"></noscript>
 
   <!-- Site styles and assets -->
-  <link rel="stylesheet" href="/styles.css"><!-- Reuse site theme -->
+  <link rel="stylesheet" href="/styles.min.css?v=20260508"><!-- Reuse site theme -->
   <link rel="icon" type="image/png" href="/images/favicon.png">
   <link rel="apple-touch-icon" href="/images/favicon.png">
 
@@ -50,15 +50,15 @@
         <img src="/images/Melalogo.png" alt="Mela Whole Foods Logo" class="logo-img" width="100" height="100">
         <div class="site-name"><span class="mela-purple">Mela</span> Whole Foods</div>
       </div>
-      <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenu" onclick="(window.toggleNavMenu && toggleNavMenu())">
+      <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenu" type="button">
         <span></span><span></span><span></span>
       </button>
-      <ul class="nav-menu" role="menubar" id="navMenu">
-        <li role="none"><a href="/index.html#home" role="menuitem">Home</a></li>
-        <li role="none"><a href="/index.html#mission" role="menuitem">Mission</a></li>
-        <li role="none"><a href="/index.html#products" role="menuitem">Products & Services</a></li>
-        <li role="none"><a href="/index.html#donate" role="menuitem">Donate</a></li>
-        <li role="none"><a href="/index.html#contact" role="menuitem">Contact</a></li>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="/index.html#home">Home</a></li>
+        <li><a href="/index.html#mission">Mission</a></li>
+        <li><a href="/index.html#products">Products & Services</a></li>
+        <li><a href="/index.html#donate">Donate</a></li>
+        <li><a href="/index.html#contact">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -68,7 +68,10 @@
       <div class="container max-w-900 centered">
         <div class="section-card bg-white not-found-card centered text-center">
           <!-- Perf: small image, lazy-loaded -->
-          <img src="/images/Melalogo.png" width="220" height="220" alt="Mela Whole Foods logo" class="not-found-illustration img-radius" loading="lazy" decoding="async">
+          <picture>
+            <source srcset="/images/melalogo-card.webp" type="image/webp">
+            <img src="/images/melalogo-card.png" width="220" height="220" alt="Mela Whole Foods logo" class="not-found-illustration img-radius" decoding="async">
+          </picture>
           <h1>We couldn’t find that page</h1>
           <p>Let’s get you back on track. Use the links below or go to the home page.</p>
           <div class="not-found-actions">
@@ -89,10 +92,10 @@
           <p>Serving our community with dignity, respect, and compassion. No one should go hungry.</p>
           <div class="social-links">
             <a href="https://facebook.com/melawholefoods" aria-label="Follow us on Facebook" rel="noopener noreferrer" target="_blank">
-              <img src="/images/SocialIcons/Facebook.png" alt="Mela Whole Foods on Facebook" class="social-icon" width="40" height="40" loading="lazy">
+              <img src="/images/SocialIcons/Facebook.png" alt="" class="social-icon" width="40" height="40" loading="lazy">
             </a>
             <a href="https://instagram.com/melawholefoods" aria-label="Follow us on Instagram" rel="noopener noreferrer" target="_blank">
-              <img src="/images/SocialIcons/IGicon.png" alt="Mela Whole Foods on Instagram" class="social-icon" width="40" height="40" loading="lazy">
+              <img src="/images/SocialIcons/IGicon.png" alt="" class="social-icon" width="40" height="40" loading="lazy">
             </a>
           </div>
         </div>
@@ -125,6 +128,6 @@
   <script>
     // No-op: header button calls toggleNavMenu() if available
   </script>
-  <script src="/script.js" defer></script>
+  <script src="/script.min.js?v=20260508" defer></script>
 </body>
 </html>

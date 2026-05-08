@@ -30,6 +30,15 @@ body {
 .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
 .skip-link:focus{left:12px;top:12px;width:auto;height:auto;background:#387f2f;color:#fff;padding:.5rem .75rem;border-radius:6px;z-index:3000}
 
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #ef9509;
+  outline-offset: 3px;
+}
+
 /* Optimize images for responsiveness */
 img {
   max-width: 100%;
@@ -80,6 +89,7 @@ img {
   width: 50px;
   height: 50px;
   background: #387f2f;
+  border: none;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -653,7 +663,7 @@ section[id] {
 .contact-form h3{color:#387f2f;margin-bottom:1.5rem}
 .form-group{margin-bottom:1.5rem}
 .form-group input,.form-group select,.form-group textarea{width:100%;padding:12px;border:1px solid #ddd;border-radius:5px;font-family:inherit;font-size:1rem}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:#387f2f}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:#387f2f;box-shadow:0 0 0 3px rgba(56,127,47,.18)}
 
 /* Style only the subject dropdown */
 #topic{
@@ -665,14 +675,14 @@ section[id] {
   font-size:1rem;
   background-color:#fff;
 }
-#topic:focus{outline:none;border-color:#387f2f}
+#topic:focus{outline:none;border-color:#387f2f;box-shadow:0 0 0 3px rgba(56,127,47,.18)}
 
 /* Footer */
 .footer{background:#387f2f;color:#fff;padding:3rem 0 1rem}
 .footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;margin-bottom:2rem}
 /* Ensure footer uses grid even if utility classes add flex */
 .footer .footer-content{display:grid !important}
-.footer-section h3,.footer-section h4{margin-bottom:1rem;color:#ef9509}
+.footer-section h3,.footer-section h4{margin-bottom:1rem;color:#fff}
 .footer-section p,.footer-section address{line-height:1.8;margin-bottom:1rem;font-style:normal}
 .footer-section ul{list-style:none}
 .footer-section ul li{margin-bottom:.5rem}
@@ -685,7 +695,9 @@ section[id] {
 .social-links a:hover{transform:scale(1.2)}
 .social-icon{width:40px;height:40px;object-fit:contain;background:rgba(255,255,255,.12);border-radius:12px;padding:4px;transition:opacity .3s,transform .3s,filter .3s;filter:drop-shadow(0 0 .5px #ef9509) drop-shadow(0 0 2px #ef9509)}
 .social-links a:hover .social-icon{opacity:.7;transform:scale(1.1)}
-.footer-bottom{border-top:1px solid #2d6525;padding-top:1rem;text-align:center;color:#ef9509}
+.footer-bottom{border-top:1px solid #2d6525;padding-top:1rem;text-align:center;color:#fff}
+
+.footer .mela-purple{color:#fff !important}
 
 /* Ensure footer email link is visible on green background */
 .footer-section a.mailto-footer { color: #fff; text-decoration: underline; font-size: 1.15rem }
@@ -736,7 +748,7 @@ section[id] {
   .footer-section ul { -webkit-columns: 1; -moz-columns: 1; columns: 1 }
 }
 
-@media(max-width:768px){
+@media (prefers-reduced-motion: reduce) {
 *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 html{scroll-behavior:auto}
 }

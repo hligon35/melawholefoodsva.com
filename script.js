@@ -4,37 +4,61 @@ document.addEventListener('DOMContentLoaded', function() {
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-menu a');
 
+    function setMenuOpen(isOpen) {
+        if (!hamburger || !navMenu) return;
+        hamburger.setAttribute('aria-expanded', String(isOpen));
+        hamburger.classList.toggle('active', isOpen);
+        navMenu.classList.toggle('active', isOpen);
+    }
+
+    function closeMenu() {
+        setMenuOpen(false);
+    }
+
     if (hamburger && navMenu) {
         hamburger.addEventListener('click', function() {
             const expanded = hamburger.getAttribute('aria-expanded') === 'true';
-            hamburger.setAttribute('aria-expanded', !expanded);
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
+            setMenuOpen(!expanded);
             // Trap focus inside menu when open
-            if (!expanded) {
+            if (!expanded && navLinks.length > 0) {
                 navLinks[0].focus();
             }
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!navMenu.classList.contains('active')) return;
+            if (navMenu.contains(e.target) || hamburger.contains(e.target)) return;
+            closeMenu();
         });
     }
 
     // Close mobile menu when clicking on a link
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-            hamburger.setAttribute('aria-expanded', 'false');
+            closeMenu();
         });
     });
 
     // Keyboard navigation for mobile menu
-    navMenu.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-            hamburger.setAttribute('aria-expanded', 'false');
+    if (navMenu) {
+        navMenu.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMenu();
+                hamburger.focus();
+            }
+        });
+    }
+
+    window.toggleNavMenu = function() {
+        if (!hamburger || !navMenu) return;
+        const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+        setMenuOpen(!expanded);
+        if (!expanded && navLinks.length > 0) {
+            navLinks[0].focus();
+        } else if (expanded) {
             hamburger.focus();
         }
-    });
+    };
 });
 
 // Smooth scrolling for anchor links
@@ -166,6 +190,7 @@ document.addEventListener('DOMContentLoaded', function(){
 // Header scroll effect
 window.addEventListener('scroll', function() {
     const header = document.querySelector('.header');
+    if (!header) return;
     if (window.scrollY > 100) {
         header.style.background = 'rgba(255, 255, 255, 0.95)';
         header.style.backdropFilter = 'blur(10px)';
@@ -173,7 +198,7 @@ window.addEventListener('scroll', function() {
         header.style.background = '#fff';
         header.style.backdropFilter = 'none';
     }
-});
+}, { passive: true });
 
 // Intersection Observer for animations
 const observerOptions = {
@@ -317,6 +342,35 @@ document.addEventListener('keydown', function(e) {
     }
 });
 
+// Floating scroll arrow controls
+document.addEventListener('DOMContentLoaded', function() {
+    const scrollArrow = document.getElementById('scrollArrow');
+    if (!scrollArrow) return;
+
+    let isScrollingUp = false;
+
+    function updateScrollArrow() {
+        const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollPercentage = documentHeight > 0 ? scrollTop / documentHeight : 0;
+
+        scrollArrow.classList.toggle('visible', scrollPercentage > 0.1);
+        scrollArrow.classList.toggle('up', scrollPercentage > 0.5);
+        scrollArrow.classList.toggle('down', scrollPercentage <= 0.5);
+        isScrollingUp = scrollPercentage > 0.5;
+    }
+
+    scrollArrow.addEventListener('click', function() {
+        window.scrollTo({
+            top: isScrollingUp ? 0 : document.documentElement.scrollHeight,
+            behavior: 'smooth'
+        });
+    });
+
+    window.addEventListener('scroll', updateScrollArrow, { passive: true });
+    updateScrollArrow();
+});
+
 // Auto-highlight all standalone occurrences of "Mela" across visible text
 document.addEventListener('DOMContentLoaded', function() {
     const targetWord = 'Mela';
@@ -387,3 +441,12 @@ document.addEventListener('DOMContentLoaded', function(){
     }, { rootMargin: '-40% 0px -55% 0px', threshold: [0.1, 0.25, 0.5, 0.75] });
     map.forEach((_, section) => observer.observe(section));
 });
+
+// Optional PWA: register the service worker after the page has loaded
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js').catch(function(err) {
+            console.warn('Service worker registration failed:', err);
+        });
+    });
+}

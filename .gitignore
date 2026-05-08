@@ -1,0 +1,8 @@
+node_modules/
+.lh-temp/
+.lh-profile/
+lighthouse-report*.json
+styles.home.purged.css
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

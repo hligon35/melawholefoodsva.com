@@ -50,886 +50,14 @@
     <!-- Preload critical resources -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"></noscript>
-  <link rel="preload" href="styles.css" as="style">
+  <link rel="preload" href="styles.home.min.css?v=20260508" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="styles.home.min.css?v=20260508"></noscript>
   <!-- Performance: Preload likely LCP image (hero) to speed up first render -->
-  <link rel="preload" as="image" href="images/Melapro.png" imagesrcset="images/Melapro.png 1x" imagesizes="(max-width: 600px) 220px, (max-width: 1024px) 280px, 350px">
-  <!-- Performance: Preload main script without blocking render -->
-  <link rel="preload" href="script.js" as="script">
+  <link rel="preload" as="image" href="images/Melapro-hero.webp" imagesrcset="images/Melapro-hero.webp 700w, images/Melapro-large.webp 1400w" imagesizes="(max-width: 600px) 220px, (max-width: 1024px) 280px, 280px" type="image/webp">
   <!-- SEO: Single-language site hint for search engines -->
   <link rel="alternate" href="https://melawholefoodsva.com/" hreflang="en-us">
-  <!-- Performance: Prefetch low-priority internal pages for faster navigation -->
-  <link rel="prefetch" href="/privacy-policy.html" as="document">
-  <link rel="prefetch" href="/partners.html" as="document">
-  <link rel="prefetch" href="/annual-reports.html" as="document">
     
-    <!-- Critical CSS for above-the-fold content -->
-    <style>
-        /* Critical reset and base styles */
-        *{margin:0;padding:0;box-sizing:border-box}
-        html,body{overflow-x:hidden;scroll-behavior:smooth}
-        body{font-family:'Open Sans',sans-serif;line-height:1.6;color:#333}
-        
-        /* Critical header styles */
-        .header{background:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.1);position:fixed;width:100%;top:0;z-index:1000}
-        .navbar{width:100%;padding:0 40px;display:flex;justify-content:space-between;align-items:center}
-        .logo{display:flex;align-items:center;gap:1rem}
-        .logo-img{height:100px;width:auto;object-fit:contain}
-        .logo .site-name{color:#387f2f;font-size:1.8rem;font-weight:700;margin:0}
-        
-        /* Critical hero styles */
-        .hero{margin-top:80px;padding:4rem 0;background:linear-gradient(135deg,#f5f9f2 0%,#f5f9f2 100%);display:flex;align-items:center;justify-content:center;min-height:50vh;max-width:1200px;margin-left:auto;margin-right:auto}
-        
-        /* Critical button styles */
-        .btn{padding:12px 30px;text-decoration:none;border-radius:5px;font-weight:600;transition:all .3s;display:inline-block;border:none;cursor:pointer}
-        .btn-primary{background:#387f2f;color:#fff}
-        .btn-secondary{background:transparent;color:#387f2f;border:2px solid #387f2f}
-        
-        /* Critical responsive styles */
-        @media (max-width: 900px) {
-          .navbar{padding:0 20px}
-          .logo .site-name{font-size:1.4rem}
-          .logo-img{height:80px}
-          img[alt="Community Empowerment"]{width:375px!important;height:375px!important}
-        }
-        @media (max-width: 600px) {
-          .navbar{padding:0 15px}
-          .logo .site-name{font-size:1.2rem}
-          .logo-img{height:70px}
-        }
-    </style>
-    
-  <link rel="stylesheet" href="styles.css">
   <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
-    
-    <!-- Additional optimized styles -->
-    <style>
-        /* Ensure anchor navigation leaves space for fixed header */
-        section[id] {
-          scroll-margin-top: 100px;
-        }
-        /* Footer Quick Links two columns */
-        .footer-section ul {
-          -webkit-columns: 2;
-          -moz-columns: 2;
-          columns: 2;
-          column-gap: 2rem;
-          margin: 0;
-          padding: 0;
-        }
-        /* Footer: make Quick Links single column on narrow screens */
-        @media (max-width: 600px) {
-          .footer-section ul {
-            -webkit-columns: 1;
-            -moz-columns: 1;
-            columns: 1;
-          }
-        }
-        .footer-section ul li {
-          break-inside: avoid;
-          margin-bottom: 0.5rem;
-        }
-        /* Center footer content */
-        .footer-content {
-          justify-content: center !important;
-          text-align: center;
-        }
-        .footer-section {
-          text-align: center;
-        }
-        .footer-bottom {
-          text-align: center;
-        }
-
-        /* Hero section responsive fixes */
-        @media (max-width: 1024px) and (min-width: 769px) {
-          .hero {
-            text-align: center !important;
-            align-items: center !important;
-            justify-content: center !important;
-          }
-          .hero-content {
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            justify-content: center !important;
-            text-align: center !important;
-          }
-          .hero-content > div {
-            gap: 1.5rem !important;
-            align-items: center !important;
-            justify-content: center !important;
-          }
-          .hero-content > div > div {
-            max-width: 300px !important;
-          }
-          .hero-content h1 {
-            font-size: 2rem !important;
-          }
-          .hero-content p {
-            font-size: 1.1rem !important;
-          }
-          .hero-content img {
-            width: 300px !important;
-            height: 300px !important;
-          }
-        }
-
-        @media (max-width: 900px) {
-          .hero-content > div {
-            flex-direction: column !important;
-            gap: 1.5rem !important;
-            align-items: center !important;
-          }
-          .hero-content > div > div {
-            flex: none !important;
-            width: 100% !important;
-            max-width: 400px !important;
-          }
-          .hero-content h1 {
-            font-size: 1.8rem !important;
-          }
-          .hero-content p {
-            font-size: 1rem !important;
-          }
-        }
-
-        @media (max-width: 600px) {
-          .hero-content h1 {
-            font-size: 1.5rem !important;
-          }
-          .hero-content p {
-            font-size: 0.95rem !important;
-          }
-          .hero-content img {
-            width: 280px !important;
-            height: 280px !important;
-          }
-        }
-
-        /* Mission & Vision responsive fixes */
-        @media (max-width: 1024px) and (min-width: 769px) {
-          #mission .container > div {
-            gap: 2rem !important;
-          }
-          #mission .container > div > div {
-            min-width: 350px !important;
-            max-width: 450px !important;
-            padding: 1.5rem !important;
-          }
-        }
-
-        @media (max-width: 900px) {
-          #mission .container > div {
-            flex-direction: column !important;
-            gap: 2rem !important;
-            align-items: center !important;
-          }
-          #mission .container > div > div {
-            min-width: 0 !important;
-            max-width: 100% !important;
-            width: 100% !important;
-            margin: 0 1rem !important;
-          }
-        }
-
-        @media (max-width: 600px) {
-          #mission .container > div {
-            gap: 1.5rem !important;
-          }
-          #mission .container > div > div {
-            padding: 1.5rem !important;
-            margin: 0 0.5rem !important;
-          }
-        }
-
-        /* Objectives section responsive fixes */
-        @media (max-width: 1024px) and (min-width: 769px) {
-          #objectives .section-card > div > div {
-            max-width: 300px !important;
-            padding: 1.25rem !important;
-          }
-        }
-
-        @media (max-width: 900px) {
-          #objectives .section-card > div {
-            flex-direction: column !important;
-            gap: 1.5rem !important;
-          }
-          #objectives .section-card > div > div {
-            max-width: 100% !important;
-            flex: none !important;
-            margin: 0 !important;
-          }
-        }
-
-        @media (max-width: 600px) {
-          #objectives .section-card > div > div {
-            padding: 1rem !important;
-            margin: 0 !important;
-          }
-        }
-
-        /* Community Empowerment responsive fixes */
-        @media (max-width: 1024px) and (min-width: 769px) {
-          .community-flex {
-            gap: 1.5rem !important;
-          }
-          .community-flex img {
-            width: 400px !important;
-            height: 400px !important;
-            max-width: 45vw !important;
-          }
-        }
-
-        @media (max-width: 900px) {
-          .community-flex {
-            flex-direction: column !important;
-            align-items: center !important;
-            gap: 1.5rem !important;
-          }
-          .community-flex > div:first-child {
-            order: 1;
-            display: flex !important;
-            justify-content: center !important;
-          }
-          .community-flex img {
-            width: 350px !important;
-            height: 350px !important;
-            max-width: 90vw !important;
-            flex: none !important;
-          }
-        }
-
-        @media (max-width: 600px) {
-          .community-flex img {
-            width: 280px !important;
-            height: 280px !important;
-            max-width: 95vw !important;
-          }
-        }
-
-        /* Products & Services responsive fixes */
-        @media (max-width: 1024px) and (min-width: 769px) {
-          #products .section-card > div > div {
-            max-width: 350px !important;
-            padding: 1.25rem !important;
-          }
-        }
-
-        @media (max-width: 900px) {
-          #products .section-card > div {
-            flex-direction: column !important;
-            gap: 1.5rem !important;
-          }
-          #products .section-card > div > div {
-            max-width: 100% !important;
-            flex: none !important;
-            margin: 0 !important;
-          }
-        }
-
-        @media (max-width: 600px) {
-          #products .section-card > div > div {
-            padding: 1rem !important;
-            margin: 0 !important;
-          }
-        }
-
-        /* Innovation/Services grid responsive fixes */
-        @media (max-width: 1024px) and (min-width: 769px) {
-          .services-grid {
-            display: grid !important;
-            grid-template-columns: 1fr 1fr !important;
-            grid-template-rows: 1fr 1fr !important;
-            gap: 1.5rem !important;
-            justify-items: center !important;
-            max-width: 600px !important;
-            margin: 0 auto !important;
-          }
-          .service-card {
-            max-width: 250px !important;
-            width: 100% !important;
-            padding: 1rem !important;
-          }
-        }
-
-        @media (max-width: 900px) {
-          .services-grid {
-            flex-direction: column !important;
-            align-items: center !important;
-            gap: 1.5rem !important;
-          }
-          .service-card {
-            max-width: 350px !important;
-            width: 100% !important;
-            margin: 0 !important;
-          }
-        }
-
-        @media (max-width: 600px) {
-          .service-card {
-            max-width: 100% !important;
-            margin: 0 !important;
-            padding: 1rem !important;
-          }
-        }
-
-        /* Stats grid responsive fixes */
-        @media (max-width: 900px) {
-          .stats {
-            grid-template-columns: 1fr 1fr !important;
-            gap: 1rem !important;
-          }
-        }
-
-        @media (max-width: 600px) {
-          .stats {
-            grid-template-columns: 1fr !important;
-            gap: 1rem !important;
-          }
-          .stat {
-            min-width: 0 !important;
-            padding: 1rem !important;
-          }
-        }
-
-        /* Volunteer section responsive fixes */
-        @media (max-width: 1024px) and (min-width: 769px) {
-          .volunteer-content {
-            display: flex !important;
-            flex-direction: row !important;
-            gap: 1.5rem !important;
-            align-items: center !important;
-          }
-          .volunteer-card {
-            flex: 1 !important;
-            min-width: 300px !important;
-          }
-          .volunteer-image {
-            flex: 1 !important;
-            min-width: 350px !important;
-            display: flex !important;
-            justify-content: center !important;
-          }
-          .volunteer-image img {
-            max-width: 400px !important;
-            width: 100% !important;
-            height: auto !important;
-          }
-        }
-
-        @media (max-width: 900px) {
-          .volunteer-content {
-            flex-direction: column !important;
-            gap: 1.5rem !important;
-            align-items: center !important;
-          }
-          .volunteer-card, .volunteer-image {
-            min-width: 0 !important;
-            max-width: 100% !important;
-            width: 100% !important;
-            margin: 0 !important;
-          }
-          .volunteer-image img {
-            max-width: 400px !important;
-            width: 100% !important;
-            height: auto !important;
-          }
-        }
-
-        @media (max-width: 600px) {
-          .volunteer-card, .volunteer-image {
-            margin: 0 !important;
-          }
-          .volunteer-image img {
-            max-width: 300px !important;
-          }
-        }
-
-        /* Contact section responsive fixes */
-        @media (max-width: 900px) {
-          .contact-content {
-            flex-direction: column !important;
-            gap: 2rem !important;
-            align-items: center !important;
-            text-align: center !important;
-          }
-          .contact-info, .contact-form {
-            max-width: 100% !important;
-            width: 100% !important;
-            margin: 0 !important;
-          }
-        }
-
-        @media (max-width: 600px) {
-          .contact-info, .contact-form {
-            margin: 0 !important;
-          }
-          .contact-form {
-            padding: 1.5rem !important;
-          }
-        }
-
-        /* Educational Outreach section responsive fixes */
-        @media (max-width: 1024px) and (min-width: 769px) {
-          section[style*="max-width:1800px"] > div > div {
-            gap: 2rem !important;
-          }
-          section[style*="max-width:1800px"] > div > div > div {
-            max-width: 400px !important;
-          }
-          section[style*="max-width:1800px"] .section-card {
-            padding: 1.5rem !important;
-          }
-        }
-
-        @media (max-width: 900px) {
-          section[style*="max-width:1800px"] > div > div {
-            flex-direction: column !important;
-            gap: 2rem !important;
-            align-items: center !important;
-          }
-          section[style*="max-width:1800px"] > div > div > div {
-            min-width: 0 !important;
-            max-width: 100% !important;
-            width: 100% !important;
-            margin: 0 !important;
-          }
-        }
-
-        @media (max-width: 600px) {
-          section[style*="max-width:1800px"] > div > div {
-            gap: 1.5rem !important;
-          }
-          section[style*="max-width:1800px"] > div > div > div {
-            margin: 0 !important;
-          }
-          section[style*="max-width:1800px"] .section-card {
-            padding: 1.5rem !important;
-          }
-        }
-
-        /* Button responsive fixes */
-        @media (max-width: 600px) {
-          .hero-buttons {
-            flex-direction: column !important;
-            gap: 1rem !important;
-            align-items: center !important;
-          }
-          .hero-buttons a {
-            margin: 0 !important;
-            width: 200px !important;
-            text-align: center !important;
-          }
-        }
-
-        /* General container and padding fixes */
-        @media (max-width: 1024px) and (min-width: 769px) {
-          body, main {
-            padding-left: 1rem !important;
-            padding-right: 1rem !important;
-          }
-          .container {
-            padding-left: 0.5rem !important;
-            padding-right: 0.5rem !important;
-            max-width: calc(100vw - 2rem) !important;
-          }
-          section {
-            padding: 1.75rem 0 !important;
-          }
-          h1 {
-            font-size: 2rem !important;
-          }
-          h2 {
-            font-size: 1.5rem !important;
-          }
-          h3 {
-            font-size: 1.2rem !important;
-          }
-        }
-
-        /* Footer responsive fixes */
-        @media (max-width: 1024px) and (min-width: 769px) {
-          .footer .container {
-            padding-left: 1rem !important;
-            padding-right: 1rem !important;
-            max-width: calc(100vw - 2rem) !important;
-          }
-          .footer-content {
-            gap: 1.5rem !important;
-            padding: 0 0.5rem !important;
-          }
-          .footer-section {
-            min-width: 160px !important;
-          }
-          .footer-section:last-child {
-            flex: 1.5 !important;
-            min-width: 200px !important;
-          }
-          .footer-section p {
-            word-wrap: break-word !important;
-            overflow-wrap: break-word !important;
-          }
-          .footer-section a {
-            word-wrap: break-word !important;
-            overflow-wrap: break-word !important;
-          }
-        }
-
-        @media (max-width: 900px) {
-          body, main {
-            padding-left: 1rem !important;
-            padding-right: 1rem !important;
-          }
-          .container {
-            padding-left: 1rem !important;
-            padding-right: 1rem !important;
-            max-width: calc(100vw - 2rem) !important;
-          }
-          section {
-            padding: 1.5rem 0 !important;
-          }
-        }
-
-        @media (max-width: 600px) {
-          body, main {
-            padding-left: 0.5rem !important;
-            padding-right: 0.5rem !important;
-          }
-          .container {
-            padding-left: 0.5rem !important;
-            padding-right: 0.5rem !important;
-            max-width: calc(100vw - 1rem) !important;
-          }
-          section {
-            padding: 1rem 0 !important;
-          }
-          h1 {
-            font-size: 1.5rem !important;
-          }
-          h2 {
-            font-size: 1.3rem !important;
-          }
-          h3 {
-            font-size: 1.1rem !important;
-          }
-        }
-
-        /* Responsive page margins */
-        body, main {
-          width: 100%;
-          box-sizing: border-box;
-          overflow-x: hidden;
-        }
-        .container {
-          width: 100%;
-          max-width: 95vw;
-          margin-left: auto;
-          margin-right: auto;
-          box-sizing: border-box;
-        }
-
-        /* Hamburger menu styles */
-        .hamburger {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          width: 48px;
-          height: 48px;
-          background: none;
-          border: none;
-          cursor: pointer;
-          z-index: 2100;
-        }
-        .hamburger span {
-          display: block;
-          width: 32px;
-          height: 4px;
-          margin: 5px 0;
-          background: #387f2f;
-          border-radius: 2px;
-          transition: 0.3s;
-        }
-        .nav-menu {
-          display: none !important;
-          position: absolute !important;
-          top: 70px !important;
-          right: 24px !important;
-          background: #fff !important;
-          box-shadow: 0 4px 24px rgba(56,127,47,0.18) !important;
-          border-radius: 16px !important;
-          padding: 1.5rem 2.5rem !important;
-          z-index: 2100 !important;
-          margin-right: 0 !important;
-          min-width: 220px !important;
-          transition: opacity 0.2s;
-        }
-        .nav-menu[style*="block"] {
-          display: block !important;
-          opacity: 1 !important;
-        }
-        .nav-menu li {
-          margin: 1rem 0 !important;
-          text-align: left !important;
-        }
-        .nav-menu a {
-          color: #387f2f !important;
-          font-weight: 600 !important;
-          font-size: 1.1rem !important;
-          text-decoration: none !important;
-          padding: 0.5rem 1rem !important;
-          border-radius: 8px !important;
-          display: block !important;
-          transition: background 0.2s;
-        }
-        .nav-menu a:hover {
-          background: #f5f9f2 !important;
-        }
-        .hamburger {
-          position: relative !important;
-          right: 0;
-          margin-left: auto !important;
-          display: flex !important;
-        }
-        @media (max-width: 900px) {
-          .navbar {
-            justify-content: space-between !important;
-          }
-        }
-        @media (min-width: 901px) {
-          .navbar {
-            justify-content: flex-start !important;
-            gap: 2rem !important;
-          }
-          .logo {
-            margin-right: 2rem !important;
-          }
-        }
-
-        /* Navbar mobile fixes */
-        @media (max-width: 1024px) and (min-width: 769px) {
-          .navbar {
-            padding: 0 25px !important;
-          }
-          .logo .site-name {
-            font-size: 1.6rem !important;
-          }
-          .logo-img {
-            height: 90px !important;
-            width: 90px !important;
-          }
-        }
-
-        @media (max-width: 900px) {
-          .navbar {
-            padding: 0 20px !important;
-          }
-          .logo .site-name {
-            font-size: 1.4rem !important;
-          }
-          .logo-img {
-            height: 80px !important;
-            width: 80px !important;
-          }
-        }
-
-        @media (max-width: 600px) {
-          .navbar {
-            padding: 0 15px !important;
-          }
-          .logo .site-name {
-            font-size: 1.2rem !important;
-          }
-          .logo-img {
-            height: 70px !important;
-            width: 70px !important;
-          }
-        }
-
-        /* Hero Section Responsive Fixes */
-        .hero {
-          min-height: 60vh;
-          display: flex !important;
-          flex-direction: column !important;
-          align-items: center !important;
-          justify-content: center !important;
-          text-align: center !important;
-          padding: 2rem 0 !important;
-          margin-top: 80px !important;
-        }
-        
-        .hero-content {
-          max-width: 90% !important;
-          width: 100% !important;
-          margin: 0 auto !important;
-          padding: 0 1rem !important;
-        }
-        
-        .hero-content > div {
-          display: flex !important;
-          flex-direction: column !important;
-          align-items: center !important;
-          justify-content: center !important;
-          gap: 1.5rem !important;
-          width: 100% !important;
-        }
-        
-        .hero-content > div > div {
-          flex: none !important;
-          width: 100% !important;
-          max-width: 100% !important;
-          display: flex !important;
-          flex-direction: column !important;
-          align-items: center !important;
-          justify-content: center !important;
-          text-align: center !important;
-        }
-        
-        .hero-content img {
-          max-width: 300px !important;
-          width: 100% !important;
-          height: auto !important;
-          margin: 0 auto !important;
-        }
-        
-        .hero-buttons {
-          display: flex !important;
-          flex-direction: row !important;
-          gap: 1rem !important;
-          justify-content: center !important;
-          align-items: center !important;
-          flex-wrap: wrap !important;
-        }
-
-        @media (max-width: 1024px) and (min-width: 769px) {
-          .hero {
-            min-height: 55vh !important;
-            padding: 2rem 0 !important;
-          }
-          .hero-content {
-            max-width: 85% !important;
-          }
-          .hero-content h1 {
-            font-size: 2.2rem !important;
-          }
-          .hero-content img {
-            max-width: 280px !important;
-          }
-        }
-
-        @media (max-width: 900px) {
-          .hero {
-            min-height: 50vh !important;
-            padding: 1.5rem 0 !important;
-          }
-          .hero-content {
-            max-width: 95% !important;
-            padding: 0 0.5rem !important;
-          }
-          .hero-content h1 {
-            font-size: 2rem !important;
-          }
-          .hero-content p {
-            font-size: 1.1rem !important;
-          }
-          .hero-content img {
-            max-width: 250px !important;
-          }
-          .hero-buttons {
-            flex-direction: column !important;
-            gap: 0.75rem !important;
-            width: 100% !important;
-          }
-          .hero-buttons a {
-            width: 200px !important;
-            text-align: center !important;
-          }
-        }
-
-        @media (max-width: 600px) {
-          .hero {
-            min-height: 45vh !important;
-            padding: 1rem 0 !important;
-          }
-          .hero-content {
-            max-width: 100% !important;
-            padding: 0 0.5rem !important;
-          }
-          .hero-content h1 {
-            font-size: 1.8rem !important;
-            margin-bottom: 0.5rem !important;
-          }
-          .hero-content p {
-            font-size: 1rem !important;
-            margin-bottom: 0.75rem !important;
-          }
-          .hero-content img {
-            max-width: 220px !important;
-          }
-          .hero-buttons {
-            margin: 1rem 0 !important;
-          }
-          .hero-buttons a {
-            width: 180px !important;
-            padding: 0.75rem 1rem !important;
-            font-size: 0.9rem !important;
-          }
-        }
-
-        /* Floating Scroll Arrow Styles */
-        .scroll-arrow {
-          position: fixed;
-          bottom: 30px;
-          right: 30px;
-          width: 50px;
-          height: 50px;
-          background: #387f2f;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          box-shadow: 0 4px 12px rgba(56,127,47,0.3);
-          transition: all 0.3s ease;
-          z-index: 1000;
-          opacity: 0;
-          visibility: hidden;
-        }
-        .scroll-arrow.visible {
-          opacity: 1;
-          visibility: visible;
-        }
-        .scroll-arrow:hover {
-          background: #2d6626;
-          transform: scale(1.1);
-          box-shadow: 0 6px 20px rgba(56,127,47,0.4);
-        }
-        .scroll-arrow svg {
-          width: 24px;
-          height: 24px;
-          fill: white;
-          transition: transform 0.3s ease;
-        }
-        .scroll-arrow.up svg {
-          transform: rotate(180deg);
-        }
-        .scroll-arrow.down svg {
-          transform: rotate(0deg);
-        }
-        @media (max-width: 768px) {
-          .scroll-arrow {
-            bottom: 20px;
-            right: 20px;
-            width: 45px;
-            height: 45px;
-          }
-          .scroll-arrow svg {
-            width: 20px;
-            height: 20px;
-          }
-        }
-    </style>
     
     <!-- Favicon -->
     
@@ -1022,24 +150,24 @@
                   <div class="site-name"><span class="mela-purple">Mela</span> Whole Foods</div>
                 </div>
         <!-- A11y: Tie button to menu via aria-controls for assistive tech -->
-        <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenu" onclick="toggleNavMenu()">
+        <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenu" type="button">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
-        <ul class="nav-menu" role="menubar" id="navMenu">
-                    <li role="none"><a href="#home" role="menuitem">Home</a></li>
-                    <li role="none"><a href="#mission" role="menuitem">Mission</a></li>
-                    <li role="none"><a href="#objectives" role="menuitem">Objectives</a></li>
-                    <li role="none"><a href="#community" role="menuitem">Community</a></li>
-                    <li role="none"><a href="#products" role="menuitem">Products & Services</a></li>
+        <ul class="nav-menu" id="navMenu">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#mission">Mission</a></li>
+              <li><a href="#objectives">Objectives</a></li>
+              <li><a href="#community">Community</a></li>
+              <li><a href="#products">Products & Services</a></li>
           <!-- SEO/UX: Impact section is currently disabled; route to Innovation to avoid dead link -->
-          <li role="none"><a href="#innovation" role="menuitem" title="Impact section coming soon — see Innovation">Impact</a></li>
-                    <li role="none"><a href="#innovation" role="menuitem">Innovation</a></li>
-                    <li role="none"><a href="#merch" role="menuitem">Merch</a></li>
-                    <li role="none"><a href="#volunteer" role="menuitem">Volunteer</a></li>
-                    <li role="none"><a href="#donate" role="menuitem">Donate</a></li>
-                    <li role="none"><a href="#contact" role="menuitem">Contact</a></li>
+          <li><a href="#innovation" title="Impact section coming soon — see Innovation">Impact</a></li>
+              <li><a href="#innovation">Innovation</a></li>
+              <li><a href="#merch">Merch</a></li>
+                    <li><a href="#contact" title="Volunteer inquiries are handled through the contact form">Volunteer</a></li>
+              <li><a href="#donate">Donate</a></li>
+              <li><a href="#contact">Contact</a></li>
                 </ul>
         </nav>
     </header>
@@ -1054,7 +182,20 @@
           <div class="flex-center mt-1">
           <div class="flex-center flex-1 justify-center">
             <!-- Performance: LCP image; prioritized via <link rel=preload> above -->
-            <img src="images/Melapro.png" alt="Mela Whole Foods Logo" width="350" height="350" class="img-radius">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="images/Melapro-hero.webp 700w, images/Melapro-large.webp 1400w"
+                sizes="(max-width: 600px) 220px, (max-width: 1024px) 280px, 280px">
+              <img
+                src="images/Melapro-hero.png"
+                srcset="images/Melapro-hero.png 700w, images/Melapro-large.png 1400w"
+                sizes="(max-width: 600px) 220px, (max-width: 1024px) 280px, 280px"
+                alt="Mela Whole Foods Logo"
+                width="700"
+                height="224"
+                class="img-radius">
+            </picture>
               <div>
                 <p class="text-brand fs-115 fw-400 mb-1 text-center">Empowering communities through fresh, affordable, and high-quality food delivered with heart, purpose, and a commitment to equity.</p>
               </div>
@@ -1255,7 +396,10 @@
                 <div class="services-grid">
           <article class="service-card bg-alt p-1 maxw-250 text-center shadow-green-sm rounded-10">
             <!-- Perf/A11y: Async decode; dimensions already set to prevent layout shift -->
-            <img src="images/produce.jpg" alt="Fresh local produce from community farmers" width="250" height="160" loading="lazy" decoding="async" class="br-6 h-160 obj-cover">
+            <picture>
+              <source srcset="images/produce-card.webp" type="image/webp">
+              <img src="images/produce-card.jpg" alt="Fresh local produce from community farmers" width="250" height="160" loading="lazy" decoding="async" class="br-6 h-160 obj-cover">
+            </picture>
                         <h3>Fresh Local Produce</h3>
                         <p>Hand-picked fruits and vegetables from local growers, delivered weekly.</p>
                     </article>
@@ -1265,12 +409,18 @@
                         <p>Grains, rice, canned goods, and essentials at prices everyone can afford.</p>
                     </article>
           <article class="service-card bg-alt p-1 maxw-250 text-center shadow-green-sm rounded-10">
-              <img src="images/fooddelivery.jpg" alt="Mobile grocery truck bringing food to neighborhoods" width="250" height="160" loading="lazy" decoding="async" class="br-6 h-160 obj-cover">
+              <picture>
+                <source srcset="images/fooddelivery-card.webp" type="image/webp">
+                <img src="images/fooddelivery-card.jpg" alt="Mobile grocery truck bringing food to neighborhoods" width="250" height="160" loading="lazy" decoding="async" class="br-6 h-160 obj-cover">
+              </picture>
                         <h3>Mobile Grocery Truck</h3>
                         <p>Our truck brings the store to you, no need to travel far for healthy food.</p>
                     </article>
           <article class="service-card bg-alt p-1 maxw-250 text-center shadow-green-sm rounded-10">
-            <img src="images/nutrition.jpg" alt="Community nutrition education and health workshops" width="250" height="160" loading="lazy" decoding="async" class="br-6 h-160 obj-cover">
+            <picture>
+              <source srcset="images/nutrition-card.webp" type="image/webp">
+              <img src="images/nutrition-card.jpg" alt="Community nutrition education and health workshops" width="250" height="160" loading="lazy" decoding="async" class="br-6 h-160 obj-cover">
+            </picture>
                         <h3>Nutrition Education</h3>
                         <p>Free workshops and tips to help families make healthy choices every day.</p>
                     </article>
@@ -1285,10 +435,13 @@
           <h2 class="text-brand">Mela Merch</h2>
           <div class="product-card bg-alt p-15 centered shadow-green-sm maxw-350 rounded-10 my-2">
             <!-- Perf: Lazy-load non-critical merch image and decode async -->
-            <img src="images/Melalogo.png" alt="Mela Whole Foods merchandise coming soon - support our mission" width="250" height="250" class="img-radius obj-cover" loading="lazy" decoding="async">
+            <picture>
+              <source srcset="images/melalogo-card.webp" type="image/webp">
+              <img src="images/melalogo-card.png" alt="Mela Whole Foods merchandise coming soon - support our mission" width="250" height="250" class="img-radius obj-cover" loading="lazy" decoding="async">
+            </picture>
                         <!-- <h3 style="color:#387f2f;margin-top:1rem;">Merch Coming Soon!</h3> -->
                         <p class="fs-11 my-05" ></p>
-            <a href="#" class="btn btn-primary mt-1">Coming Soon!</a>
+            <button class="btn btn-primary mt-1" type="button" disabled aria-disabled="true">Coming Soon!</button>
                     </div>
                 </div>
             </div>
@@ -1334,11 +487,25 @@
                     <article class="donation-card">
                         <div class="donation-image">
                             <!-- Perf: Async decode for non-critical donation image -->
-                            <img src="images/Melapro.png" alt="Mela Whole Foods donation support - helping families access fresh food" width="500" height="500" loading="lazy" decoding="async">
+                            <picture>
+                              <source
+                                type="image/webp"
+                                srcset="images/Melapro-hero.webp 700w, images/Melapro-large.webp 1400w"
+                                sizes="(max-width: 600px) 220px, (max-width: 1024px) 280px, 280px">
+                              <img
+                                src="images/Melapro-hero.png"
+                                srcset="images/Melapro-hero.png 700w, images/Melapro-large.png 1400w"
+                                sizes="(max-width: 600px) 220px, (max-width: 1024px) 280px, 280px"
+                                alt="Mela Whole Foods donation support - helping families access fresh food"
+                                width="700"
+                                height="224"
+                                loading="lazy"
+                                decoding="async">
+                            </picture>
                         </div>
                         <h3>Monetary Donations</h3>
                         <p>Financial contributions allow us to purchase fresh produce, proteins, and other essential items in bulk at reduced costs.</p>
-                        <a href="#" id="openDonateModal" class="btn btn-primary" role="button">Donate</a>
+                        <button id="openDonateModal" class="btn btn-primary" type="button">Donate</button>
                     </article>
                 </div>
             </div>
@@ -1396,7 +563,7 @@
                     
                     <!-- Direct Email Option -->
           <div class="flex-col justify-start items-start flex-1 minw-300 maxw-500 contact-side">
-            <h4 class="brand-text mb-1">Or Email Us Directly</h4>
+            <h3 class="brand-text mb-1">Or Email Us Directly</h3>
             <p class="mb-15">Send your message directly to our team:</p>
                 <a href="mailto:info@melawholefoodsva.com?subject=Inquiry from Mela Whole Foods Website" class="mailto-link">
                   info@melawholefoodsva.com
@@ -1406,13 +573,6 @@
           </div>
                     </div>
                 </div>
-                <style>
-                @media (max-width: 768px) {
-                  .contact-form {
-                    padding: 1.5rem !important;
-                  }
-                }
-                </style>
             </div>
         </section>
     </main>
@@ -1427,12 +587,12 @@
             <div class="qr-card">
               <h4>Zelle</h4>
               <!-- Perf: QR image decodes async inside modal -->
-              <img src="images/MelaZelle.jpg" alt="Zelle QR code for donation" class="qr-img" loading="lazy" decoding="async">
+              <img src="images/MelaZelle.jpg" alt="Zelle QR code for donation" class="qr-img" width="180" height="180" loading="lazy" decoding="async">
               <p class="qr-note">Donate through Zelle</p>
             </div>
           <div class="qr-card">
             <h4>PayPal</h4>
-            <img src="images/MelaPayPal.jpeg" alt="PayPal QR code for donation" class="qr-img" loading="lazy" decoding="async">
+            <img src="images/MelaPayPal.jpeg" alt="PayPal QR code for donation" class="qr-img" width="180" height="180" loading="lazy" decoding="async">
             <p class="qr-note">Donate through PayPal</p>
           </div>
         </div>
@@ -1448,10 +608,10 @@
                     <p>Serving our community with dignity, respect, and compassion. No one should go hungry.</p>
                     <div class="social-links">
                         <a href="https://facebook.com/melawholefoods" aria-label="Follow us on Facebook" rel="noopener noreferrer" target="_blank">
-                          <img src="/images/SocialIcons/Facebook.png" alt="Mela Whole Foods on Facebook" class="social-icon" width="40" height="40" loading="lazy">
+                          <img src="/images/SocialIcons/Facebook.png" alt="" class="social-icon" width="40" height="40" loading="lazy">
                         </a>
                         <a href="https://instagram.com/melawholefoods" aria-label="Follow us on Instagram" rel="noopener noreferrer" target="_blank">
-                          <img src="/images/SocialIcons/IGicon.png" alt="Mela Whole Foods on Instagram" class="social-icon" width="40" height="40" loading="lazy">
+                          <img src="/images/SocialIcons/IGicon.png" alt="" class="social-icon" width="40" height="40" loading="lazy">
                         </a>
                     </div>
                 </div>
@@ -1467,7 +627,7 @@
                         <li><a href="#innovation" title="Impact section coming soon — see Innovation">Impact</a></li>
                         <li><a href="#innovation">Innovation</a></li>
                         <li><a href="#merch">Merch</a></li>
-                        <li><a href="#volunteer">Volunteer</a></li>
+                        <li><a href="#contact" title="Volunteer inquiries are handled through the contact form">Volunteer</a></li>
                         <li><a href="#donate">Donate</a></li>
                         <li><a href="#contact">Contact</a></li>
                         <li><a href="/privacy-policy.html">Privacy Policy</a></li>
@@ -1491,121 +651,15 @@
     </footer>
 
     <!-- Floating Scroll Arrow -->
-    <div class="scroll-arrow" id="scrollArrow" onclick="scrollToTarget()">
+    <button class="scroll-arrow" id="scrollArrow" type="button" aria-label="Scroll page">
         <svg viewBox="0 0 24 24">
             <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/>
         </svg>
-    </div>
+    </button>
 
   <!-- Toast notifications -->
   <div id="toast" role="status" aria-live="polite" aria-atomic="true" class="toast hidden"></div>
 
-    <script>
-      function toggleNavMenu() {
-        var navMenu = document.getElementById('navMenu');
-        var hamburger = document.querySelector('.hamburger');
-        var expanded = hamburger.getAttribute('aria-expanded') === 'true';
-        if(navMenu) {
-          if(navMenu.style.display === 'block') {
-            navMenu.style.display = 'none';
-            hamburger.setAttribute('aria-expanded', 'false');
-          } else {
-            navMenu.style.display = 'block';
-            hamburger.setAttribute('aria-expanded', 'true');
-          }
-        }
-      }
-
-      document.addEventListener('DOMContentLoaded', function() {
-        // Close nav menu when a nav link is clicked
-        var navMenu = document.getElementById('navMenu');
-        var hamburger = document.querySelector('.hamburger');
-        if(navMenu && hamburger) {
-          var navLinks = navMenu.querySelectorAll('a');
-          navLinks.forEach(function(link) {
-            link.addEventListener('click', function() {
-              navMenu.style.display = 'none';
-              hamburger.setAttribute('aria-expanded', 'false');
-            });
-          });
-        }
-        // Hide nav menu when clicking outside
-        document.addEventListener('click', function(e) {
-          var navMenu = document.getElementById('navMenu');
-          var hamburger = document.querySelector('.hamburger');
-          if(navMenu && hamburger && navMenu.style.display === 'block') {
-            if(!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-              navMenu.style.display = 'none';
-              hamburger.setAttribute('aria-expanded', 'false');
-            }
-          }
-        });
-
-        // Floating Scroll Arrow Functionality
-        var scrollArrow = document.getElementById('scrollArrow');
-        var isScrollingUp = false;
-        
-        function updateScrollArrow() {
-          var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-          var documentHeight = document.documentElement.scrollHeight - window.innerHeight;
-          var scrollPercentage = scrollTop / documentHeight;
-          
-          // Show arrow when scrolled past 10% of the page
-          if (scrollPercentage > 0.1) {
-            scrollArrow.classList.add('visible');
-          } else {
-            scrollArrow.classList.remove('visible');
-          }
-          
-          // Change direction based on 50% scroll
-          if (scrollPercentage > 0.5) {
-            scrollArrow.classList.add('up');
-            scrollArrow.classList.remove('down');
-            isScrollingUp = true;
-          } else {
-            scrollArrow.classList.add('down');
-            scrollArrow.classList.remove('up');
-            isScrollingUp = false;
-          }
-        }
-        
-        // Smooth scroll to target
-        function scrollToTarget() {
-          if (isScrollingUp) {
-            // Scroll to top
-            window.scrollTo({
-              top: 0,
-              behavior: 'smooth'
-            });
-          } else {
-            // Scroll to bottom
-            window.scrollTo({
-              top: document.documentElement.scrollHeight,
-              behavior: 'smooth'
-            });
-          }
-        }
-        
-        // Make scrollToTarget globally available
-        window.scrollToTarget = scrollToTarget;
-        
-        // Listen for scroll events
-        window.addEventListener('scroll', updateScrollArrow);
-        
-        // Initial call to set correct state
-        updateScrollArrow();
-      });
-    </script>
-    <script src="script.js" defer></script>
-    <!-- Optional PWA: Register Service Worker for basic offline caching and 404 fallback -->
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('/sw.js').catch(function(err){
-            console.warn('Service worker registration failed:', err);
-          });
-        });
-      }
-    </script>
+    <script src="script.min.js?v=20260508" defer></script>
 </body>
 </html>
